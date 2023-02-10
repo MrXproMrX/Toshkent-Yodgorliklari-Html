@@ -1,0 +1,175 @@
+// olimlar_in start
+
+.olimlar_in{
+    position: relative;
+    margin-bottom: 70px;
+
+    &__item__list{
+        display: grid;
+        grid-template-columns: 140px auto 50px;
+        grid-gap: 40px;
+        align-items:start;
+        padding-right: 40px;
+        width: 100%;
+        background-color:#F1F4F6;
+        height: auto;
+    }
+
+    &__item__img{
+        @include fiximg(100%,auto,true);        
+        img{
+            max-height: 140px;
+            object-position: center top;
+            border-bottom:6px solid $blue;
+            aspect-ratio: 1;
+            box-sizing:content-box;
+        }
+    }
+
+    &__name{
+        @include fontAll(22px,700,$title);
+        line-height: 135%;
+        margin-bottom: 10px;
+    }
+
+    &__title__h4{
+        @include fontAll(12px,700,$blue);
+        line-height: 100%;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    &__open{
+        width: 50px;
+        height: 50px;
+        background-color:$blue;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        @include fontAll(20px,700,$fff);
+        line-height: 100%;
+        margin-top: 45px;
+        i{
+            @extend%transition;
+        }
+    }
+
+    &__text{
+        @include fontAll(1rem,400,$text);
+        line-height: 150%;
+        text-align: justify;
+        width: 100%;
+        height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        @extend%transition;
+
+        h1,h2,h3,h4,h5,h6,em,strong{
+            font-size: 110%;
+            color:$title;
+            font-weight: 700;
+            font-style: normal;
+            display: inline-block;
+        }
+    
+        a{
+            font-size: 110%;
+            color:$title;
+            font-weight: 700;
+            font-style: normal;
+            display: inline-block;
+        }
+    }
+
+    &__item__text{
+        padding-top: 45px;
+    }
+
+    &__list{
+        .olimlar_in__item__list + .olimlar_in__item__list{
+            margin-top: 40px;
+        }
+        .active{
+            .olimlar_in__text {
+                height: auto;
+                opacity: 1;
+                overflow: inherit;
+                padding-top: 20px;;
+                padding-bottom: 20px;
+            }
+
+            .olimlar_in__open{
+                i{
+                    transform: rotate(180deg);
+                    -webkit-transform: rotate(180deg);
+                    -moz-transform: rotate(180deg);
+                    -ms-transform: rotate(180deg);
+                    -o-transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}
+
+// olimlar_in end
+
+
+@media (max-width:1200px){
+    .olimlar_in__list .olimlar_in__item__list + .olimlar_in__item__list {
+        margin-top: 30px;
+    }
+
+    .olimlar_in__item__list {
+        grid-gap: 30px;
+        padding-right: 30px;
+    }
+
+    .olimlar_in__name{
+        font-size: 20px;
+    }
+}
+
+@media (max-width:650px){
+    .olimlar_in__name{
+        font-size: 18px;
+    }
+
+    .olimlar_in__item__list {
+        padding-right: 20px;
+        grid-template-columns: 140px auto 40px;
+        grid-template-areas: "imgs imgs imgs" "texts texts opens";
+        padding-bottom: 20px;
+        grid-gap: 20px 10px;
+    }
+
+    .olimlar_in__item__text{
+        padding-left: 20px;
+        padding-top: 0px;
+    }
+
+    .olimlar_in__open{
+        margin-top: 0px;
+    }
+
+    .olimlar_in__item__img{
+        width: 140px;
+    }
+
+    .olimlar_in__open{
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .olimlar_in__item__img{
+        grid-area:imgs;
+    }
+
+    .olimlar_in__item__text{
+        grid-area:texts;
+    }
+
+    .olimlar_in__open{
+        grid-area:opens;
+    }
+}
